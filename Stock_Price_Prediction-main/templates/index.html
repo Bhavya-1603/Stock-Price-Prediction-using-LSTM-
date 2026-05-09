@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Price Predictor</title>
+</head>
+<body>
+
+    <h1>Stock Price Prediction App</h1>
+
+    <form method="POST">
+        <input type="text" name="stock" placeholder="Enter Stock Symbol">
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if error %}
+        <h3>{{ error }}</h3>
+    {% endif %}
+
+    {% if plot_path_prediction %}
+
+        <h2>{{ stock }}</h2>
+
+        <img src="{{ plot_path_ema_20_50 }}" width="700">
+
+        <img src="{{ plot_path_ema_100_200 }}" width="700">
+
+        <img src="{{ plot_path_prediction }}" width="700">
+
+        <br><br>
+
+        <a href="{{ dataset_link }}">Download Dataset CSV</a>
+
+        <h2>Dataset Description</h2>
+
+        {{ data_desc|safe }}
+
+    {% endif %}
+
+</body>
+</html>
